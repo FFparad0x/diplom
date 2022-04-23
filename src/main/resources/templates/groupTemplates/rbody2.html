@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="modal fade" id="record2modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="rbody2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Настройка записи</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id ="selectorsbody" class="modal-body">
+                <fieldset id="rec2set">
+                    <input id="selectorsearch" type="search" class="mb-1 form-control form-control-dark" placeholder="Поиск" aria-label="Search" oninput ="Search()" >
+                    <div class="container border-bottom" id="GRPall">
+                        <input class="form-check-input" type="checkbox" id="all"  form="search" th:checked="${data.contains('rbody2')}">
+                        <label class="form-check-label" for="all">
+                            Все</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ДЕНЬ" name="data" id="MIT207" th:checked="${data.contains('2ДЕНЬ')}" form="search">
+                            <label class="form-check-label" for="MIT207">
+                                Индекс -  День</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2СЧKOORD" name="data" id="MIT208" th:checked="${data.contains('2СЧKOORD')}" form="search">
+                            <label class="form-check-label" for="MIT208">
+                                Счетчик:  Признак дрейфующей станции</label></div><div class="form-check" id="GRP2ВЫСОТАСП"> <input class="form-check-input" type="checkbox" value="2ВЫСОТАСП" name="data" id="GRP209" th:checked="${data.contains('2ВЫСОТАСП')}" form="search" >
+                        <label class="form-check-label" for="GRP209">
+                            Группа: ВЫСОТАСП</label>
+                        <div class="container border-2 border-start "  th:classappend="${data.contains('2ВЫСОТАСП')}?'border-primary':'border-grey'"><div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2СНЕПВЫСМ" name="data" id="MIT209" th:checked="${data.contains('2СНЕПВЫСМ')}" form="search">
+                            <label class="form-check-label" for="MIT209">
+                                Высота снежного покрова</label></div>
+                        </div></div><div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="2СНЕСТЕПВ" name="data" id="MIT218" th:checked="${data.contains('2СНЕСТЕПВ')}" form="search">
+                        <label class="form-check-label" for="MIT218">
+                            Степень покрытия окрест. станции снегом</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2СНЕПХАРЗ" name="data" id="MIT220" th:checked="${data.contains('2СНЕПХАРЗ')}" form="search">
+                            <label class="form-check-label" for="MIT220">
+                                Характер залегания снежного покрова</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ОСКОЛБДС" name="data" id="MIT222" th:checked="${data.contains('2ОСКОЛБДС')}" form="search">
+                            <label class="form-check-label" for="MIT222">
+                                Количество блоков с дождем за сутки</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ОСПРПЕРД" name="data" id="MIT224" th:checked="${data.contains('2ОСПРПЕРД')}" form="search">
+                            <label class="form-check-label" for="MIT224">
+                                Призн.переход.дождя через границу месяца</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ОСАСУМ1Ч" name="data" id="MIT226" th:checked="${data.contains('2ОСАСУМ1Ч')}" form="search">
+                            <label class="form-check-label" for="MIT226">
+                                Сумма осадков за 1ч при переходе дождя</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ОСПРОД1Ч" name="data" id="MIT229" th:checked="${data.contains('2ОСПРОД1Ч')}" form="search">
+                            <label class="form-check-label" for="MIT229">
+                                Продолж. 1 части дождя (Нат.знач.часы.мин.)</label></div>
+                        <div class="form-check" id="GRP2SROKM"> <input class="form-check-input" type="checkbox" value="2SROKM" name="data" id="GRP233" th:checked="${data.contains('2SROKM')}" form="search" >
+                            <label class="form-check-label" for="GRP233">
+                                Группа: SROKM</label>
+                            <div class="container border-2 border-start "  th:classappend="${data.contains('2SROKM')}?'border-primary':'border-grey'"><div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2СРОКНАБЛ" name="data" id="MIT233" th:checked="${data.contains('2СРОКНАБЛ')}" form="search">
+                                <label class="form-check-label" for="MIT233">
+                                    Срок наблюдения</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ВИДГОРИЗ" name="data" id="MIT234" th:checked="${data.contains('2ВИДГОРИЗ')}" form="search">
+                                    <label class="form-check-label" for="MIT234">
+                                        Горизонтальная дальность видимости</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛОКОЛВ" name="data" id="MIT237" th:checked="${data.contains('2ОБЛОКОЛВ')}" form="search">
+                                    <label class="form-check-label" for="MIT237">
+                                        Общее количество облачности</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛНКОЛВ" name="data" id="MIT239" th:checked="${data.contains('2ОБЛНКОЛВ')}" form="search">
+                                    <label class="form-check-label" for="MIT239">
+                                        Количество облачности нижнего яруса</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛФОРВЯ" name="data" id="MIT241" th:checked="${data.contains('2ОБЛФОРВЯ')}" form="search">
+                                    <label class="form-check-label" for="MIT241">
+                                        Форма облаков верхнего яруса</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛФОРСЯ" name="data" id="MIT243" th:checked="${data.contains('2ОБЛФОРСЯ')}" form="search">
+                                    <label class="form-check-label" for="MIT243">
+                                        Форма облаков среднего яруса</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛФОРВР" name="data" id="MIT245" th:checked="${data.contains('2ОБЛФОРВР')}" form="search">
+                                    <label class="form-check-label" for="MIT245">
+                                        Форма облаков вертикального развития</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛСЛСЛК" name="data" id="MIT247" th:checked="${data.contains('2ОБЛСЛСЛК')}" form="search">
+                                    <label class="form-check-label" for="MIT247">
+                                        Слоистые и слоисто-кучевые облака</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛСЛДРД" name="data" id="MIT249" th:checked="${data.contains('2ОБЛСЛДРД')}" form="search">
+                                    <label class="form-check-label" for="MIT249">
+                                        Слоисто-дожд,разорванно-дождевые облака</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛВЫНГМ" name="data" id="MIT251" th:checked="${data.contains('2ОБЛВЫНГМ')}" form="search">
+                                    <label class="form-check-label" for="MIT251">
+                                        Высота нижней границы облачности</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОБЛПННУС" name="data" id="MIT255" th:checked="${data.contains('2ОБЛПННУС')}" form="search">
+                                    <label class="form-check-label" for="MIT255">
+                                        Признак наличия облачности ниже уровня станции</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2СОСТППЧВ" name="data" id="MIT257" th:checked="${data.contains('2СОСТППЧВ')}" form="search">
+                                    <label class="form-check-label" for="MIT257">
+                                        Состояние поверхности почвы</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ПОГОМСНВ" name="data" id="MIT260" th:checked="${data.contains('2ПОГОМСНВ')}" form="search">
+                                    <label class="form-check-label" for="MIT260">
+                                        Погода между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ПОГОДСНВ" name="data" id="MIT262" th:checked="${data.contains('2ПОГОДСНВ')}" form="search">
+                                    <label class="form-check-label" for="MIT262">
+                                        Погода в срок наблюдения</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ВЕТНАПРМ" name="data" id="MIT264" th:checked="${data.contains('2ВЕТНАПРМ')}" form="search">
+                                    <label class="form-check-label" for="MIT264">
+                                        Направление ветра</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ВЕТСКОРМ" name="data" id="MIT267" th:checked="${data.contains('2ВЕТСКОРМ')}" form="search">
+                                    <label class="form-check-label" for="MIT267">
+                                        Средняя скорость ветра</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ВЕТСКМАК" name="data" id="MIT270" th:checked="${data.contains('2ВЕТСКМАК')}" form="search">
+                                    <label class="form-check-label" for="MIT270">
+                                        Максимальное скорость ветра</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ОСАСУМСР" name="data" id="MIT273" th:checked="${data.contains('2ОСАСУМСР')}" form="search">
+                                    <label class="form-check-label" for="MIT273">
+                                        Сумма осадков за период между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМПОВПМ" name="data" id="MIT276" th:checked="${data.contains('2ТЕМПОВПМ')}" form="search">
+                                    <label class="form-check-label" for="MIT276">
+                                        Температура поверхности почвы в срок</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМПСПИР" name="data" id="MIT279" th:checked="${data.contains('2ТЕМПСПИР')}" form="search">
+                                    <label class="form-check-label" for="MIT279">
+                                        Температура пов. почвы по спирту мин. терм-ра</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕИПОВПМ" name="data" id="MIT282" th:checked="${data.contains('2ТЕИПОВПМ')}" form="search">
+                                    <label class="form-check-label" for="MIT282">
+                                        Мин. температура пов-сти почвы между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕАПОВПМ" name="data" id="MIT285" th:checked="${data.contains('2ТЕАПОВПМ')}" form="search">
+                                    <label class="form-check-label" for="MIT285">
+                                        Макс. температура пов-сти почвы между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМПППВС" name="data" id="MIT288" th:checked="${data.contains('2ТЕМПППВС')}" form="search">
+                                    <label class="form-check-label" for="MIT288">
+                                        Температура пов-сти почвы по макс. терм-ру п/встр.</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМВОЗДМ" name="data" id="MIT291" th:checked="${data.contains('2ТЕМВОЗДМ')}" form="search">
+                                    <label class="form-check-label" for="MIT291">
+                                        Температура воздуха в срок по сухому терм-ру</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМВСМСМ" name="data" id="MIT294" th:checked="${data.contains('2ТЕМВСМСМ')}" form="search">
+                                    <label class="form-check-label" for="MIT294">
+                                        Темп.воздуха в срок по смоченному терм-ру</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕВСПИРТ" name="data" id="MIT298" th:checked="${data.contains('2ТЕВСПИРТ')}" form="search">
+                                    <label class="form-check-label" for="MIT298">
+                                        Температура воздуха по спирту мин. терм-ра</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕИВОЗСМ" name="data" id="MIT301" th:checked="${data.contains('2ТЕИВОЗСМ')}" form="search">
+                                    <label class="form-check-label" for="MIT301">
+                                        Мин.температура воздуха между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕАВОЗСМ" name="data" id="MIT304" th:checked="${data.contains('2ТЕАВОЗСМ')}" form="search">
+                                    <label class="form-check-label" for="MIT304">
+                                        Макс. темперура воздуха между сроками</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕМВМПВС" name="data" id="MIT307" th:checked="${data.contains('2ТЕМВМПВС')}" form="search">
+                                    <label class="form-check-label" for="MIT307">
+                                        Темпера воздуха по макс. терм-ра после встрях.</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2УПРВПАРР" name="data" id="MIT310" th:checked="${data.contains('2УПРВПАРР')}" form="search">
+                                    <label class="form-check-label" for="MIT310">
+                                        Парциальное давление водяного пара</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ВЛАОТВОМ" name="data" id="MIT314" th:checked="${data.contains('2ВЛАОТВОМ')}" form="search">
+                                    <label class="form-check-label" for="MIT314">
+                                        Относительная влажность воздуха в срок</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2НЕДНАСПР" name="data" id="MIT316" th:checked="${data.contains('2НЕДНАСПР')}" form="search">
+                                    <label class="form-check-label" for="MIT316">
+                                        Дефицит насыщения водяного пара</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТОЧКАРОС" name="data" id="MIT320" th:checked="${data.contains('2ТОЧКАРОС')}" form="search">
+                                    <label class="form-check-label" for="MIT320">
+                                        Температура точки росы в срок наблюдения</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ДАВЛАСТМ" name="data" id="MIT323" th:checked="${data.contains('2ДАВЛАСТМ')}" form="search">
+                                    <label class="form-check-label" for="MIT323">
+                                        Атмосферное давление в срок на уровне станции</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ДАВЛАУММ" name="data" id="MIT326" th:checked="${data.contains('2ДАВЛАУММ')}" form="search">
+                                    <label class="form-check-label" for="MIT326">
+                                        Атмосферное давление в срок на уровне моря</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕНБВИДГ" name="data" id="MIT329" th:checked="${data.contains('2ТЕНБВИДГ')}" form="search">
+                                    <label class="form-check-label" for="MIT329">
+                                        Характеристика барической тенденции</label></div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2ТЕНБВЕЛР" name="data" id="MIT331" th:checked="${data.contains('2ТЕНБВЕЛР')}" form="search">
+                                    <label class="form-check-label" for="MIT331">
+                                        Величина барической тенденции</label></div>
+                            </div></div><div class="form-check" id="GRP2KOORD"> <input class="form-check-input" type="checkbox" value="2KOORD" name="data" id="GRP1041" th:checked="${data.contains('2KOORD')}" form="search" >
+                        <label class="form-check-label" for="GRP1041">
+                            Группа: KOORD</label>
+                        <div class="container border-2 border-start "  th:classappend="${data.contains('2KOORD')}?' border-primary':' border-grey'"><div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2ШИРОТАДС" name="data" id="MIT1041" th:checked="${data.contains('2ШИРОТАДС')}" form="search">
+                            <label class="form-check-label" for="MIT1041">
+                                Широта дрейф.станц.</label></div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2ДОЛГОТАС" name="data" id="MIT1044" th:checked="${data.contains('2ДОЛГОТАС')}" form="search">
+                                <label class="form-check-label" for="MIT1044">
+                                    Долгота дрейф.станц</label></div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2ОПРПОЛУШ" name="data" id="MIT1047" th:checked="${data.contains('2ОПРПОЛУШ')}" form="search">
+                                <label class="form-check-label" for="MIT1047">
+                                    Определит.полушария</label></div>
+                        </div></div>
+
+
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
